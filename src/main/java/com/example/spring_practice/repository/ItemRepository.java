@@ -18,4 +18,14 @@ public interface ItemRepository extends JpaRepository<Items, Long> {
 //    List<Items> findExcludeCallByExcludeTypeAndRegId(Integer excludeType, String regId);
 
 //    List<Items> findItemsBy
+
+
+    /**
+     * 조회 : regId 받기 -> excludeCall, exclude List 전부 반환
+     * 추가 : regId, excludeType, exclude Name 모두 받기
+     * 수정 : regId, excludeType ->
+     * 삭제 : id 정보 받기 -> 삭제'
+     *
+     * api 를 최소한으로 주는게 좋은지, 따로 주는 게 좋은지..
+     */
 }
