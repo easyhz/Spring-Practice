@@ -28,4 +28,11 @@ public interface ItemRepository extends JpaRepository<Items, Long> {
      *
      * api 를 최소한으로 주는게 좋은지, 따로 주는 게 좋은지..
      */
+
+    /**
+     *  excludeCall update
+     *  : find 해서
+     *      Null 이면 -> insert
+     *      Not Null 이면 -> update
+     */
 }
