@@ -1,0 +1,15 @@
+spring:
+  datasource:   # H2 DB ??
+    url: jdbc:h2:mem:JPATest
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true # H2 DB  ? ?? ?? ?? ( http://localhost:8080/h2-console)
+  jpa:
+    database: H2
+    show-sql: true # JPA ?? ? SQL ?? ??
+    properties:
+      hibernate:
+        format_sql: true # ?? ??? ?? ?? ??
