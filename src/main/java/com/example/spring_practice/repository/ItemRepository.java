@@ -36,3 +36,4 @@ public interface ItemRepository extends JpaRepository<Items, Long> {
      *      Not Null 이면 -> update
      */
 }
+

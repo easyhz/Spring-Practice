@@ -3,6 +3,7 @@ package com.example.spring_practice.controller;
 import com.example.spring_practice.entity.Items;
 import com.example.spring_practice.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
 
-    @GetMapping(value = "/get")
+    @GetMapping(value = "/get") // http://localhost:8080/items/get
     public List<Items> getAllItems() {
         return itemService.getAllItems();
     }
@@ -24,7 +25,7 @@ public class ItemController {
     }
 
     @GetMapping(value = "/item")
-    public List<Items> getItem(@RequestBody Items item) {
+    public List<Items> getItem(@NotNull Items item) {
         return itemService.getItem(item.getExcludeType(), item.getRegId());
     }
 }
