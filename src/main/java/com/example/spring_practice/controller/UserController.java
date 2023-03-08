@@ -13,6 +13,7 @@ public class UserController {
 
     private final UserService userService;
 
+    // RequestParam -> params .. GET
     @GetMapping(value = "/users")
     public List<Users> getUsers(@RequestParam(required = false, defaultValue = "") String name) {
         return userService.getUsersService(name);
