@@ -25,7 +25,7 @@ public class ItemController {
     }
 
     @GetMapping(value = "/item")
-    public List<Items> getItem(@NotNull Items item) {
+    public List<Items> getItem(@RequestParam Items item) {
         return itemService.getItem(item.getExcludeType(), item.getRegId());
     }
 }
