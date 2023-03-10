@@ -5,17 +5,31 @@ import com.example.spring_practice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-
-@DataJpaTest
+@AutoConfigureMockMvc
+@SpringBootTest
 @Slf4j
 //@SpringBootTest
 class SpringPracticeApplicationTests {
+
+    @Autowired
+    private MockMvc mockMvc;
 
     @Autowired
     UserRepository userRepository;
@@ -60,6 +74,22 @@ class SpringPracticeApplicationTests {
         for(Users u : userList) {
             log.info("[FIND SOME] : " + u.getId() + " | " + u.getUsername());
         }
+    }
+
+    @Test
+    void apiGetTest() throws Exception {
+        String url = "/users?name=Kim%";
+
+        MultiValueMap<String, String> info = new LinkedMultiValueMap<>();
+        info.add("name", "Lee");
+
+        mockMvc.perform(MockMvcRequestBuilders.get(url)
+//                        .params(info)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(result -> {
+                    MockHttpServletResponse response = result.getResponse();
+                    log.info("[API GET TEST] : " + response.getContentAsString());
+                });
     }
 
 }
