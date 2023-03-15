@@ -32,7 +32,7 @@ public class ExcelController {
     public String uploadExcel(@ModelAttribute MultipartFile request) throws IOException {
 //        log.info("중간 체크 : " + request.toString());
         Resource excelFile =request.getResource();
-        InputStream tmp = excelFile.getInputStream();
+        InputStream tmp = excelFile.getInputStream();   // 파일 받아오는 부분
 //        File destFile = new File(uploadDir + request.getOriginalFilename());
 //        request.transferTo(destFile);
         log.info("name: " +request.getOriginalFilename());
