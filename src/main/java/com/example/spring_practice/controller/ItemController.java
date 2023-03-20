@@ -14,6 +14,7 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
 
+    // RequestParam vs RequestBody
     @GetMapping(value = "/get") // http://localhost:8080/items/get
     public List<Items> getAllItems() {
         return itemService.getAllItems();
